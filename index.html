@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Блокчейн</title>
+</head>
+<body>
+	<h1>Стартовая страница по блокчейну!</h1>
+	<a href="blocks">Блоки</a>
+	<form method="post" action="create-block"> 
+		<input type="text" name="createName">
+		<input type="text" name="winner">
+		<input type="text" name="money">
+		<button type="submit">Отправить</button>
+	</form>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="user.js"></script>
+<script>
+	var socket = io.connect('http://localhost:8080');
+  	socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('myevent', { my: 'data' });
+  });
+</script>
+</html>
